@@ -1,0 +1,4 @@
+#Fri Aug 18 10:30:26 IST 2023
+base.0=/home/dsadmin/Documents/flutter/sample/responsive/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
