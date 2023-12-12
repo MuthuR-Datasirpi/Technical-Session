@@ -34,7 +34,7 @@ public class EmployeeController {
      * @return
      */
     @PostMapping(path = "/insert")
-    public employee saveEmployee(@RequestBody @Valid EmployeeDTO employeeDTO) {
+    public Employee saveEmployee(@RequestBody @Valid EmployeeDTO employeeDTO) {
         Employee Success = employeeService.addEmployee(employeeDTO);
         return Success;
     }
@@ -61,7 +61,7 @@ public ResponseEntity<byte[]> generateAndDownloadPdf()throws DocumentException{
             PdfWriter.getInstance(document, byteArrayOutputStream);
             document.open();
 
-            for (Employee custom : employeeService.getemployeeData(1,1)) {
+            for (Employee custom : employeeService.getEmployeeData(1,1)) {
                 document.add(new Paragraph("Book details"));
                 document.add(new Paragraph("________________________________"));
                 document.add(new Paragraph("Id: " + custom.getEmployeeid()));

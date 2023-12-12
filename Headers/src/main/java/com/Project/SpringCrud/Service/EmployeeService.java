@@ -13,5 +13,7 @@ public interface EmployeeService {
 
     Page<Employee> getEmployeeData(int x, int y);
 
+    Page<Employee> getemployeeData(int x, int y);
+
 //    String UpdateEmployee(EmployeeUpdateDTO employeeUpdateDTO);
 }

@@ -20,13 +20,18 @@ public class EmployeeServiceIMPL implements EmployeeService{
      */
     @Override
     public Employee addEmployee(EmployeeDTO employeeDTO) {
-        Employee employee= new employee(
-                employeeDTO.getemployeename(),
-                employeeDTO.getemployeeaddress(),
+        Employee employee= new Employee(
+                employeeDTO.getEmployeename(),
+                employeeDTO.getEmployeeaddress(),
                 employeeDTO.getMobile()
         );
         employeeRepo.save(employee);
         return employee;    }
+
+    @Override
+    public Page<Employee> getEmployeeData(int x, int y) {
+        return null;
+    }
 
 
     /**
@@ -36,8 +41,8 @@ public class EmployeeServiceIMPL implements EmployeeService{
      * @return
      */
     @Override
-    public Page<employee> getemployeeData(int x, int y) {
-           Page<employee> cd = employeeRepo.findAll(PageRequest.of(x,y));
+    public Page<Employee> getemployeeData(int x, int y) {
+           Page<Employee> cd = employeeRepo.findAll(PageRequest.of(x,y));
            return  cd;
     }
 

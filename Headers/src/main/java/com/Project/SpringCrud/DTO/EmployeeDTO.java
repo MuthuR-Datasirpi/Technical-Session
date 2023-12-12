@@ -28,7 +28,7 @@ public class EmployeeDTO {
     }
 
     public void setEmployeeid(int employee) {
-        this.employee = employeeid;
+        this.employeeid = employeeid;
     }
 
     public String getEmployeename() {
