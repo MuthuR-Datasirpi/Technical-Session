@@ -33,7 +33,7 @@ public class EmployeeController {
      * @param employeeDTO
      * @return
      */
-    @PostMapping(path = "/insert")
+    @PostMapping(path = "/Insert")
     public Employee saveEmployee(@RequestBody @Valid EmployeeDTO employeeDTO) {
         Employee Success = employeeService.addEmployee(employeeDTO);
         return Success;
@@ -45,7 +45,7 @@ public class EmployeeController {
      * @param y
      * @return
      */
-    @GetMapping(path = "/select")
+    @GetMapping(path = "/Select")
     public ResponseEntity<Object> getEmployee(@RequestParam int x, @RequestParam int y) {
         Page<Employee> Data = employeeService.getEmployeeData(x, y);
         return new ResponseEntity<Object>(Data.getContent(), HttpStatus.OK);
