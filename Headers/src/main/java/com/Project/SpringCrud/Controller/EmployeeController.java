@@ -51,45 +51,4 @@ public class EmployeeController {
         return new ResponseEntity<Object>(Data.getContent(), HttpStatus.OK);
     }
 
-@GetMapping("/generate")
-public ResponseEntity<byte[]> generateAndDownloadPdf()throws DocumentException{
-        try {
-
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-            Document document = new Document();
-            PdfWriter.getInstance(document, byteArrayOutputStream);
-            document.open();
-
-            for (Employee custom : employeeService.getEmployeeData(1,1)) {
-                document.add(new Paragraph("Book details"));
-                document.add(new Paragraph("________________________________"));
-                document.add(new Paragraph("Id: " + custom.getEmployeeid()));
-                document.add(new Paragraph("Name: " + custom.getEmployeename()));
-                document.add(new Paragraph("Address: " + custom.getEmployeeaddress()));
-                document.add(new Paragraph("Mobile: " + custom.getMobile()));
-                document.add(new Paragraph("--------------------------------"));
-            }
-
-
-            document.close();
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_PDF);
-            headers.setContentDispositionFormData("filename", "generated.pdf");
-            //headers.add("Custom-Header", "Custom Value");
-            return ResponseEntity
-                    .ok()
-                    .headers(headers)
-                    .body(byteArrayOutputStream.toByteArray());
-        } catch (ArithmeticException e) {
-            e.printStackTrace();
-
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to generate PDF.".getBytes());
-        } catch (DocumentException e) {
-            throw new RuntimeException(e);
-        }
-}
 }
